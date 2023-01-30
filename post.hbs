@@ -9,9 +9,12 @@
         <header class="gh-article-header gh-canvas">
             <h1 class="gh-article-title">{{title}}</h1>
             <div class="post-meta">
-                Last updated on&nbsp;
+                {{t "updated"}}&nbsp;
                 <time datetime="{{date format="YYYY-MM-DD"}}">{{date updated_at}}</time>
             </div>
+            {{#if custom_excerpt}}
+                <p class="g-post-header__excerpt">{{custom_excerpt}}</p>
+            {{/if}}
             {{> "post-image"}}
         </header>
 
@@ -25,7 +28,7 @@
             <div class="pagination-left">
                 {{#prev_post}}
                     <a class="newer-posts" href="{{url}}">
-                        <span class="pagination-label">Previous</span>
+                        <span class="pagination-label">{{t "previous"}}</span>
                         {{title}}
                     </a>
                 {{/prev_post}}
@@ -34,7 +37,7 @@
             <div class="pagination-right">
                 {{#next_post}}
                     <a class="older-posts" href="{{url}}">
-                        <span class="pagination-label">Next</span>
+                        <span class="pagination-label">{{t "next"}}</span>
                         {{title}}
                     </a>
                 {{/next_post}}

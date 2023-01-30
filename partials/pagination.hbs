@@ -3,17 +3,17 @@
 
     <div class="pagination-left">
         {{#if prev}}
-            <a class="newer-posts" href="{{page_url prev}}">← Previous</a>
+            <a class="newer-posts" href="{{page_url prev}}">{{t "previous_arrow"}}</a>
         {{/if}}
     </div>
 
     {{#match pages "!=" 1}}
-        <span class="page-number hidden-xs hidden-sm">Page {{page}} of {{pages}}</span>
+        <span class="page-number hidden-xs hidden-sm">{{t "page"}} {{page}} {{t "of"}} {{pages}}</span>
     {{/match}}
 
     <div class="pagination-right">
         {{#if next}}
-            <a class="older-posts" href="{{page_url next}}">Next →</a>
+            <a class="older-posts" href="{{page_url next}}">{{t "next_arrow"}}</a>
         {{/if}}
     </div>
 
