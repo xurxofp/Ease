@@ -1,0 +1,86 @@
+{{!< default}}
+
+{{#post}}
+
+<main class="site-main">
+    <article class="{{post_class}}">
+
+        <div class="site-cover{{#unless @site.cover_image}} no-image{{/unless}} u-overlay">
+
+            {{#if feature_image}}
+                <img
+                    class="cover-image jarallax-img u-object-fit"
+                    srcset="{{img_url feature_image size="s"}} 400w,
+                            {{img_url feature_image size="m"}} 750w,
+                            {{img_url feature_image size="l"}} 960w,
+                            {{img_url feature_image size="xl"}} 1140w,
+                            {{img_url feature_image size="xxl"}} 1920w"
+                    sizes="(min-width: 1200px) 960px, 92vw"
+                    src="{{img_url feature_image size="l"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                >
+            {{/if}}
+
+
+            <div class="cover-content">
+                <div class="cover-description">{{title}}</div>
+
+            </div>
+
+        </div>
+
+
+        <div class="post-content gh-content gh-canvas">
+            {{content}}
+
+            {{!-- List of tags --}}
+            {{#get
+            "tags"
+            limit="all"
+            include="count.posts"
+            order="count.posts desc"
+            }}
+            <section class="g-tags-grid">
+                <div class="g-wrapper">
+                <div class="g-tags-grid__container">
+                    {{#foreach tags}}
+                    <div class="g-tags-grid__item {{#if @last}}last{{/if}}">
+                        <a href="{{url}}" class="g-tag-card">
+                        <div
+                            class="g-tag-card__image {{^if feature_image}}no-image{{/if}}"
+                        >
+                            <div class="g-tag-card__image__fallback">
+                            {{> circles-shape}}
+                            </div>
+                            {{#if feature_image}}
+                            <img
+                                src="{{img_url feature_image size="xs" format="webp"}}"
+                                alt=""
+                                class="lazy"
+                                width="60"
+                                height="60"
+                            >
+                            {{/if}}
+                        </div>
+                        <h2 class="g-tag-card__name">{{name}}</h2>
+                        {{#if description}}
+                            <p class="g-tag-card__description">
+                            {{description}}
+                            </p>
+                        {{/if}}
+                        <div class="g-tag-card__bottom">
+                            <span class="icon-arrow-right" aria-hidden="true"></span>
+                        </div>
+                        </a>
+                    </div>
+                    {{/foreach}}
+                </div>
+                </div>
+            </section>
+            {{/get}}
+        </div>
+
+    </article>
+</main>
+
+{{/post}}

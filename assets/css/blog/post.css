@@ -10,7 +10,7 @@
     letter-spacing: -0.005em;
 }
 
-.post-link:hover + .post-wrapper .post-title {
+.post-link:hover+.post-wrapper .post-title {
     opacity: 0.8;
 }
 
@@ -78,7 +78,7 @@
     font-weight: 600;
 }
 
-.post-author-name-link + .post-author-name-link::before {
+.post-author-name-link+.post-author-name-link::before {
     content: ", ";
 }
 
